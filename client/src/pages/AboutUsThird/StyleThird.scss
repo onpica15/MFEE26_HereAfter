@@ -1,0 +1,364 @@
+.ab-page-arrow{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+}
+
+.ab-bg{
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    height: 550px;
+    border-radius: 20px;
+    padding-top: 50px;
+    position: relative;
+
+}
+
+.ab-hint-wrap{
+    color: white;
+    font-weight: 500;
+    line-height: 3rem;
+    letter-spacing: 2px;
+    font-size: 24px;
+    height: 50px;
+    margin: auto;
+    position: relative;
+    margin-bottom: 80px;
+    display: flex;
+}
+
+.ab-hint-l{
+    color: #fff;
+    background-color: #E384F2;
+    text-align: center;
+    height: 50px;
+    border-radius: 15px 0 0 15px;
+}
+
+.ab-hint-l-wrap:hover .ab-hint-l{
+    color: #fff;
+    background-color: #D649EC;
+}
+
+.ab-hint-m{
+    color: #fff;
+    background-color: #9FC7FF;
+    text-align: center;
+    height: 50px;
+    width: 30%;
+
+}
+.ab-hint-m:hover {
+    color: #fff;
+    background-color: #4D8CE7;
+}
+
+.ab-hint-r{
+    color: #fff;
+    background-color: #9587E1;
+    text-align: center;
+    border-radius: 0 15px 15px 0;
+    height: 50px;
+    width: 30%;
+}
+.ab-hint-r:hover {
+    color: #fff;
+    background-color: #8A62FA;
+}
+.ab-hint-arrow{
+    border-color: #E384F2 transparent transparent transparent;
+    border-style: solid solid solid solid;
+    border-width: 13px;
+    height: 0px;
+    width: 0px;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+}
+
+
+.ab-card-wrap{
+    /* background-color: #fff; */
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+}
+.ab-c-btn-wrap{
+    align-items: center;
+}
+.ab-card{
+    /* background-color: #9FC7FF; */
+    width: 25%;
+}
+.ab-c-step{
+    /* width: 100%; */
+    color: #fff;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    background-color: #E384F2;
+    height: 13%;
+    margin: auto;
+    border-radius: 50px;
+    line-height: 3.2rem;
+    letter-spacing: 2px;
+}
+.ab-c-pic{
+    background-color: #000;
+    height: 200px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.ab-c-pic-wrap{
+    height: 100%;
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+}
+.ab-c-pic-wrap-3{
+    height: 100%;
+    display:flex ;
+    justify-content: center;
+    align-items: flex-end;
+}
+.ab-c-pic-wrap-2 {
+    height: 95%;
+    display:flex ;
+    justify-content: center;
+    align-items: flex-end;
+}
+.ab-c-pic-wrap-2 img{
+   width: 75%;
+}
+
+
+.ab-c-text{
+    margin-top: 10px;
+    color: #fff;
+    font-size: 20px;
+    margin-top: 20px;
+    line-height: 2rem;
+}
+.ab-c-btn{
+    width: 40%;
+    color: #000;
+    height: 11%;
+    background-color: #F3F59F;
+    margin-left: auto;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 2.5rem;
+}
+
+.ab-c-btn:hover{
+    color: #fff;
+    background-color: #2b2b2b;
+    transition: .5s;
+}
+.ab-c-btn.ab-g:hover{
+    color: #fff;
+    background-color: #2b2b2b;
+    transition: .5s;
+}
+.ab-c-btn.ab-b:hover{
+    color: #fff;
+    background-color: #2b2b2b;
+    transition: .5s;
+}
+
+.ab-c-text.ab-g{
+    color: #B9DED2;
+}
+.ab-c-btn.ab-g{
+    background-color: #B9DED2;
+}
+.ab-c-text.ab-b{
+    color: #9FC7FF;
+}
+.ab-c-btn.ab-b{
+    background-color: #9FC7FF;
+}
+.fa-solid.fa-star{
+    color: yellow;
+    font-size: 24px;
+    margin-right: 5px;
+    // margin-bottom: 18px;
+}
+
+
+.ab-ghost-b{
+    position: absolute;
+    top: 80px;
+    transform: scaleX(-1);
+    right: 30px;
+
+
+}
+.ab-ghost-c{
+    opacity: 0;
+    position: absolute;
+    transform: scaleX(-1);
+    top: -48px;
+    right: 450px;
+
+}
+.ab-hint-l-wrap{
+    width: 40%;
+
+    .ab-ghost-a{
+        position: absolute;
+        top: 85px;
+
+        // 鬼鬼走路
+        .ab-ghost-l1{
+            position: absolute;
+            left: 80px;
+        }
+
+        .ab-ghost-l2{
+            position: absolute;
+            left: 45px;
+            top: 10px;
+        }
+
+        .ab-ghost-l3{
+            position: absolute;
+            left: 15px;
+            top: 12px;
+        }
+    }
+}
+.ab-hint-l-wrap:hover .ab-hint-arrow{
+    border-color: #D649EC transparent transparent transparent
+
+}
+
+.ab-hint-l-wrap:hover .ab-ghost-l1{
+    animation: g1 4s ease;
+}
+
+.ab-hint-l-wrap:hover .ab-ghost-l2{
+    animation: g2 4s ease;
+}
+
+.ab-hint-l-wrap:hover .ab-ghost-l3{
+    animation: g3 4s ease;
+}
+
+// 鬼鬼走路動畫
+@keyframes g1{
+    0%{left: 80px;}
+    30%{left: 150px;transform:scaleX(1);}
+    35%{left: 150px;transform:scaleX(-1);}
+    42%{left: 150px;transform:scaleX(-1);}
+    65%{left: 80px;transform:scaleX(-1);}
+    70%{left: 80px;transform:scaleX(1);}
+    100%{left: 80px;transform:scaleX(1);}
+}
+
+@keyframes g2{
+    0%{left: 45px;}
+    35%{left: 205px;transform:scaleX(1);}
+    40%{left: 205px;transform:scaleX(-1);}
+    80%{left: 45px;;transform:scaleX(-1);}
+    85%{left: 45px;;transform:scaleX(1);}
+}
+
+@keyframes g3{
+    0%{left: 15px;}
+    40%{left: 235px;transform:scaleX(1);}
+    43%{left: 235px;transform:scaleX(-1);}
+    90%{left: 15px;;transform:scaleX(-1);}
+    93%{left: 15px;;transform:scaleX(1);}
+}
+
+// 鬼鬼彈跳
+.ab-ghost-r1{
+    position: absolute;
+    top: 7px;
+
+}
+.ab-ghost-r2{
+    position: absolute;
+    top: -22px;
+    right: -34px;
+}
+
+.ab-hint-r:hover .ab-ghost-r1{
+    animation: g4 1.5s ease;
+}
+
+.ab-hint-r:hover .ab-ghost-r2{
+    animation: g5 1.5s ease;
+}
+
+// 鬼鬼彈跳動畫
+@keyframes g4 {
+    0%{top: 7px;}
+    30%{top: 7px;}
+    38%{top: 12px;}
+    50%{top: 7px;}
+}
+
+@keyframes g5 {
+    0%{top: -22px;}
+    15%{top: -32px;}
+    30%{top: -17px;}
+    40%{top: -25px;}
+    47%{top: -19px;}
+    55%{top: -22px;}
+}
+
+// 鬼鬼出現
+.ab-ghost-m1{
+    position: absolute;
+    top: 5.5px;
+}
+
+.ab-ghost-m2{
+    position: absolute;
+    top: 17px;
+    right: 10px;
+}
+
+.ab-ghost-m3{
+    position: absolute;
+    top: 17px;
+    right: -70px;
+}
+
+.ab-hint-m:hover .ab-ghost-c{
+    animation: show 1s ease;
+}
+
+// 鬼鬼出現動畫
+@keyframes show {
+    0%{opacity:0;}
+    40%{opacity:1;}
+    50%{opacity:.5;}
+    60%{opacity:1;}
+    100%{opacity:0;}
+
+}
+
+@media (min-width: 375px) and (max-width: 800px) {
+    .ab-hint-wrap{
+      display: block;
+      margin-bottom: 150px;
+    }
+    .ab-hint-m{
+        height: 50px;
+    }
+    .ab-hint-l{
+        border-radius: 15px;
+    }
+    .ab-hint-arrow{
+        border: 0px;
+    }
+
+  }
+  
+

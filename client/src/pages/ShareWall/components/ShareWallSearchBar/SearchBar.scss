@@ -1,0 +1,150 @@
+@import '../../../../styles/variables.scss';
+
+.cpl-searchbar-container {
+    width: 100%;
+    // outline: 1px solid red;
+}
+
+.cpl-searchbar {
+    // FIXME: 改成 %
+    width: 100%;
+    max-width: 400px;
+    margin-right: 0;
+    height: 40px;
+    background-color: transparent !important;
+    border: 2px solid $secondary !important;
+    border-radius: 10px !important;
+    padding-left: 10px !important;
+    margin-bottom: 8px !important;
+    filter: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+
+    &:focus {
+        background-color: transparent;
+    }
+
+    &::placeholder {
+        font-size: 1.25rem;
+        position: relative;
+        top: 1px;
+        right: 20px;
+        font-family: $ff-t;
+        text-align: right;
+    }
+
+    &::-webkit-search-cancel-button {
+        position: relative;
+        right: 30px;
+        -webkit-appearance: none;
+        width: 16px;
+        height: 16px;
+        -webkit-mask-image: url('../../../../images/SearchBar/CgClose.svg');
+        mask-image: url('../../../../images/SearchBar/CgClose.svg');
+        -webkit-mask-size: cover;
+        mask-size: cover;
+    }
+
+    // &:active {
+    //     filter: none !important;
+    //     outline: none !important;
+    //     box-shadow: none !important;
+    // }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-searchbar {
+        height: 50px;
+        padding-left: 20px;
+
+        &::placeholder {
+            font-size: 1.5rem;
+            top: 2px;
+            right: 40px;
+        }
+    
+        &::-webkit-search-cancel-button {
+            right: 40px;
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    .cpl-searchbar {
+        margin-bottom: calc(var(--vh, 1vh) * 1) !important;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    .cpl-searchbar {
+        margin-bottom: calc(var(--vh, 1vh) * 2) !important;
+    }
+}
+
+.cpl-searchbar-light {
+    color: $bgc-D !important; // TODO: 這是在設定平時的顏色
+
+    &:focus {
+        color: $bgc-D !important; // TODO: 這是在設定 focus 時的
+    }
+
+    &:active {
+        color: $bgc-D !important; // TODO: 保險或玩花樣可以設定 因為按 x 會觸發
+    }
+
+    &::placeholder {
+        color: $bgc-D !important;
+    }
+
+    &::-webkit-search-cancel-button {
+        background-color: $bgc-D !important;    
+    }
+}
+
+.cpl-searchbar-dark {
+    color: $bgc-L-l !important; // TODO: 這是在設定平時的顏色
+
+    &:focus {
+        color: $bgc-L-l !important; // TODO: 這是在設定 focus 時的
+    }
+
+    &:active {
+        color: $bgc-L-l !important; // TODO: 保險或玩花樣可以設定 因為按 x 會觸發
+    }
+
+    &::placeholder {
+        color: $bgc-L-l !important;
+    }
+
+    &::-webkit-search-cancel-button {
+        background-color: $bgc-L-l !important;       
+    }
+}
+
+.cpl-search-icon {
+    font-size: 2rem;
+    position: relative;
+    left: -2.5rem;
+    top: 4px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-search-icon {
+        font-size: 2.5rem;
+        left: -3rem;
+        top: 5px;
+    }
+}
+
+.cpl-search-icon-light {
+    color: $bgc-D;
+}
+
+.cpl-search-icon-dark {
+    color: $bgc-L-l;
+}

@@ -1,0 +1,142 @@
+@import './variables.scss';
+
+/* ============================================================ */
+/* sweetalert2 */
+/* 此套件會自動引入 */
+/* @import '~sweetalert2/dist/sweetalert2.css'; */
+/* ============================================================ */
+
+// FIXME: 目前 Navbar 不會被 alert 蓋掉 可以調整 swal 的 z-index
+// DONE: 先給這樣吧 大家有一定想蓋的東西的時候不要超過這數字就好
+.swal2-container {
+    z-index: 100100;
+}
+
+.swal2-popup { 
+    border-radius: 20px;
+    padding-bottom: 1.875rem;
+    user-select: none;
+    color: $bgc-D;
+
+    /* M PLUS Rounded 1c 太容易缺字 */
+    h2 {
+        font-family: $ff-t;
+    }
+
+    .swal2-image {
+        pointer-events: none;
+        margin-bottom: 0;
+    }
+
+    .swal2-styled:focus {
+        box-shadow: none !important;
+    }
+
+    .swal2-styled.swal2-confirm {
+        background-color: $secondary;
+    }
+
+    // .swal2-styled.swal2-confirm:focus {
+    //     box-shadow: 0 0 0 3px rgba(112, 102, 224, 0.5);
+    // }
+
+    .swal2-styled.swal2-deny {
+        background-color: $alert;
+    }
+
+    // .swal2-styled.swal2-deny:focus {
+    //     box-shadow: 0 0 0 3px rgba(220, 55, 65, 0.5);
+    // }
+
+    .swal2-input {
+        color: $bgc-D;
+        border: 2px solid $secondary;
+        width: 70%;
+    }
+}
+
+// 以下是來生形象銜接至分享牆使用的部分
+.cpl-swal-sharewall-newpostpopup-display {
+    padding-top: 20px;
+    // background-color: red;
+    
+    .cpl-swal-snd-card {
+    position: relative;
+    // border: 1px solid $bgc-D;
+    // border-radius: 5px;
+
+        .apl-swal-snd-c-img {
+            width: 80%;
+            cursor: pointer;
+        }
+
+    }
+
+    .cpl-swal-snd-card.isActive {
+        animation: cpl-swal-snd-card-active-animation ease-in-out 1s infinite alternate;
+    }
+}
+
+@keyframes cpl-swal-snd-card-active-animation {
+    0% {
+        top: 0px
+    }
+    100% {
+        top: -4px;
+    }
+}
+
+/* ============================================================ */
+/* overlayscrollbars */
+// @import '~overlayscrollbars/css/OverlayScrollbars.css';
+/* ============================================================ */
+
+/* ============================================================ */
+/* Bootstraps */
+// 更新Bootstraps樣式;
+/* ============================================================ */
+.breadcrumb {
+    $breadcrumb-divider: none;
+    font-size: 1.135rem;
+    font-weight: 500;
+}
+
+.breadcrumb-item-link {
+    border-radius: 18px;
+    padding: 3px 12px;
+    line-height: 30px;
+    text-decoration: none;
+    font-family: $ff-t, $ff-h;
+    color: $secondary;
+    background-color: $highlight
+}
+
+.breadcrumb-item-link:hover {
+    color: #fff;
+    background-color: $accent-blue
+}
+
+.fa-solid {
+    font-size: 30px;
+    text-align: center;
+    color: $secondary
+}
+
+input[type=text], input[type=email], input[type=password], [type=date] {
+    font: 400 16px var(--text-font), Arial, sans-serif;
+    color: $bgc-D;
+    border-radius: 10px;
+}
+
+input[type=text]::placeholder, input[type=email]::placeholder, input[type=password]::placeholder, [type=date]::placeholder{
+    color:#BDBDBD;
+}
+
+input[type=text].error, input[type=email].error, input[type=password].error {
+    outline: var(--alert-l) 2px solid;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid, .form-control.is-invalid:focus, .was-validated:focus .form-control:invalid:focus {
+    color: $alert;
+    outline: $alert 2px solid;
+}

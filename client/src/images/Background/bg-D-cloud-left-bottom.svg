@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 699 503">
+    <path fillrule="evenodd" clip-rule="evenodd" fill-opacity="0.5" fill="url(#bgDclbb)" d="M311.5,0H0V502.5H444.5c172.5,0,193.5-19.5,193.5-57.5s-48-47.5-193.5-47.5-143.5,0-143.5,0c-27.33,0-57.5-2.5-57.5-30.5s30.17-33,57.5-35h310.5c52.5,0,87-18,87-48.5s-19-55-87-55H191c-26,0-64.83-10.59-65-40.5-.17-30.01,41-41,65-41h133.5c47,0,104-22,104-71S376,0,311.5,0Z" />
+<defs>
+<linearGradient id="bgDclbb" x1="349.25" y1="639.39" x2="349.25" y2="136.89" gradientTransform="translate(0 503.89) scale(1 -1)" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#7fdbe8"/>
+<stop offset="1" stop-color="#af9bff"/>
+</linearGradient>
+</defs>
+</svg>

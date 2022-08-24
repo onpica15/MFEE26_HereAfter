@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+
+.showcase {
+    margin: auto;
+    width: 350px;
+    overflow: hidden;
+}
+
+.showcaseCard {
+    text-align: center;
+    border-radius: 12px;
+    padding: 15px 0;
+    margin: 20px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.showcaseCardIMG {
+    margin: auto;
+    position: relative;
+    width: 350px;
+    height: 350px;
+}
+
+.showcaseCardIMG img {
+    position: relative;
+    z-index: 20;
+    width: 350px;
+}
+
+.showcaseCardTitle {
+    font-size: 20px;
+    padding: 10px 0px;
+}
+
+.showcaseCardTime {
+    font-size: 16px;
+    padding: 5px 0px;
+    font-weight: normal;
+}
+
+.showcaseText {
+    position: relative;
+}
+
+.avatarConbination {
+    position: relative;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.4rem;
+}
+
+.showcaseBtns {
+    display: flex;
+    justify-content: center;
+}
+
+.showcaseBtns div {
+    height: 40px;
+    width: 90px;
+    margin: 10px 10px;
+    padding-top: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+
+@media screen and (min-width: 1200px) {
+    .showcase {
+        position: relative;
+    }
+
+    .showcaseCard {
+        display: flex;
+        width: 850px;
+        position: relative;
+        margin: auto;
+    }
+
+    .showcaseCardTitle {
+        position: absolute;
+        font-size: 32px;
+        padding: 10px 0px;
+        left: 500px;
+        top: 30px;
+    }
+
+    .showcaseCardTime {
+        position: absolute;
+        font-size: 16px;
+        padding: 5px 0px;
+        font-weight: normal;
+        left: 500px;
+        top: 90px;
+    }
+
+    .showcaseCardIMG {
+        margin: 0;
+        order: 0;
+        width: 450px;
+        height: 450px;
+    }
+
+    .showcaseCardIMG img {
+        width: 450px !important;
+
+    }
+
+    .showcaseText {
+        text-align: left;
+        padding-top: 110px;
+        padding-left: 50px;
+    }
+
+    .avatarConbination {
+        text-align: left;
+    }
+
+    .avatarTotalPrice {
+        text-align: center;
+    }
+
+    .showcaseBtns {
+        text-align: center;
+    }
+
+}

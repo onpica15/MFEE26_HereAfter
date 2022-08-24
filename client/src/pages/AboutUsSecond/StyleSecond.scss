@@ -1,0 +1,188 @@
+.ab-page-arrow{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+}
+.ab-bg-sec{
+    background-color: rgba(0, 0, 0, 0.2);
+    // padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    height: 680px;
+}
+.ab-box-wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px 50px 0px 50px;
+    position: relative;
+
+}
+
+.ab-box{
+    margin: 0px 30px 40px 30px;
+    position: relative;
+
+}
+
+.ab-g-a1{
+    width: 23px;
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    transform: rotate(43deg);
+
+}
+.ab-g-a2{
+    width: 23px;
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    transform: rotate(-43deg);
+
+}
+.ab-g-a0{
+    width: 17px;
+    position: absolute;
+    top: 16px;
+    left: -1px;
+    transform: rotate(-48deg);
+
+}
+
+.ab-g-b1{
+    width: 18px;
+    position: absolute;
+    top: 25px;
+    right: -7px;
+    transform: rotate(60deg);
+    path{
+        fill: #FF78E9;
+
+    }
+
+}
+.ab-g-b2{
+    width: 18px;
+    position: absolute;
+    top: -16px;
+    left: 30px;
+    transform: rotate(-25deg);
+    path{
+        fill: #FF78E9;
+
+    }
+
+}
+.ab-g-b0{
+    width: 22px;
+    position: absolute;
+    top: -4px;
+    left: 10px;
+    transform: rotate(-35deg);
+    path{
+        fill: #FF78E9;
+
+    }
+
+}
+.ab-g-c1{
+    width: 18px;
+    position: absolute;
+    top: -15px;
+    right: 27px;
+    transform: rotate(35deg);
+    z-index: 99;
+    path{
+        fill: #F3F59F;
+
+    }
+
+}
+.ab-g-c2{
+    width: 15px;
+    position: absolute;
+    top: -24px;
+    left: 55px;
+    z-index: 99;
+    transform: rotate(-15deg);
+    path{
+        fill: #F3F59F;
+
+    }
+
+}
+.ab-g-c0{
+    width: 15px;
+    position: absolute;
+    top: 100px;
+    right: -14px;
+    z-index: 99;
+    transform: rotate(90deg);
+    path{
+        fill: #F3F59F;
+
+    }
+
+}
+.ab-box:hover .ab-g-jump{
+    opacity: 1;
+    animation: fall 1s ease ;
+    animation-fill-mode: forwards;
+
+    
+}
+@keyframes fall {
+    0%{opacity: 1};
+    100%{opacity: 0};
+
+    
+}
+.ab-pic{
+    height: 180px;
+    width: 180px;
+    background-color: #ffffff;
+    border-radius: 100px 100px 0 0;
+    border-top: 5px solid white;
+    border-left: 5px solid white;
+    border-right: 5px solid white;
+    overflow: hidden;
+}
+.ab-pic img{
+    transform: translate(-5px,-2px);
+}
+.ab-text{
+    font-size: 14px;
+    padding: 5px;
+    overflow-wrap: break-word;
+    line-height: 1.3rem;
+    height: 110px;
+    width: 180px;
+    background-color: #ffffff;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+
+}
+.ab-name{
+    color: #ffffff;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 2.2rem;
+    height: 40px;
+    width: 140px;
+    background-color: #9587E1;
+    // border: 3px solid white;
+    border-radius: 25px;
+    margin: auto;
+    position: absolute;
+    right: 20px;
+    bottom: -25px;
+}
+@media (min-width: 375px) and (max-width: 800px) {
+    .ab-bg-sec{
+        height: 30%;
+    }
+  }

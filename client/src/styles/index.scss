@@ -1,0 +1,1140 @@
+/* 正式上線改用 bootstrap-grid.min.css */
+@import '~bootstrap/scss/bootstrap-grid.scss';
+
+/* 用來替換掉套件的 scss */
+@import './packages.scss';
+
+/* 引入自定義變數 */
+@import './variables.scss';
+
+/* ============================================================ */
+/* 通用設定 */
+/* ============================================================ */
+// FIXME: 如果背景顏色不同會有露餡問題
+// 可能要傳參數進來調整背景顏色
+// TODO: 在 onClick 切換顏色按鈕時執行一段 JavaScript
+// 用 const body = document.querySelector('body').classList.add()
+// 的方式用 className toggles background-color
+// 因為 React 的 useRef() 只能參照到 #root 以下
+body {
+    background-image: linear-gradient(180deg, $bgc-L-l, $bgc-L-d);
+    // background-color: #3C3B67;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: $ff-t, Arial, sans-serif;
+}
+
+/* 有些手機橫放會超過 768px 所以選擇在 992px 切換 */
+/* FIXME: 要想辦法讓他保留高度 否則無法實現水平捲動頁面 */
+/* 要讓內容 fixed 在螢幕中 但垂直條可以滾動 */
+/* DONE: 目前可以利用 Overlay Scrollbars 來達成 */
+@media screen and (min-width: 992px) {
+    body {
+        width: 100%;
+        height: calc(var(--vh, 1vh) * 100);
+    }
+    body.isIntro{
+        height: max-content !important;
+    }
+}
+
+#root {
+    // TODO: 請記得這目前是所有 React Component 的父元素
+    height: 100%;
+    // 處理內容不足撐不高的狀況
+    min-height: calc(var(--vh, 1vh) * 100);
+    overflow: hidden; // 與 body 配合防止視窗滾動
+}
+
+h2 {
+    font-weight: 700;
+    font-size: $fz-h2;
+    font-family: $ff-h;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: $fz-h3;
+}
+
+/* ============================================================ */
+/* 通用 className */
+/* ============================================================ */
+
+/* ============================================================ */
+/* Nav */
+/* ============================================================ */
+.nav {
+    position: fixed;
+    top: 0;
+    z-index: 100000;
+    // outline: 1px solid red;
+
+    // 高度由內容撐高
+    > .nav-inner {
+        height: $height-nav-mobile;
+        color: #ffffff;
+
+        > .nav-inner-right {
+            font-size: 1.75rem;
+            position: relative;
+            bottom: 2px; // 修正 baseline 問題
+
+            // 此為Nav上的活動購物車數字
+            // TODO: 目前預設 RWD 時購物車數字直接消失，待討論
+            .nav-xuan-event-cartnum {
+                display: none;
+            }
+
+            // TODO: 某寬度時只顯示漢堡選單
+            // FIXME: 這 className 不好 但是辨識度高
+            // DONE: 先暫定為 768px
+            // FIXME: 手機版要怎麼進登入頁面？
+            .nir-NavSoul,
+            .nir-FaShoppingCart,
+            .nir-BsFillPersonFill {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .nav {
+        > .nav-inner {
+            height: $height-nav;
+
+            > .nav-inner-right {
+                .nir-NavSoul,
+                .nir-FaShoppingCart,
+                .nir-BsFillPersonFill {
+                    display: inline-block;
+                }
+                * + * {
+                    margin-left: 0.75rem;
+                }
+
+                .nir-FaShoppingCart {
+                    position: relative;
+                }
+                // 此為Nav上的活動購物車數字
+                // FIXME: 購物車數字背景顏色待討論
+                // FIXME: 購物車數字目前只有綁定「加入購物車」的按鈕，跟會員id還有localStorage的串聯待處理
+                .nav-xuan-event-cartnum {
+                    background-color: red;
+                    outline: 1px solid red;
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 50%;
+                    color: white;
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    top: -2px;
+                    // left: 55px;
+                    left: 11px; // 有改了一下定位的相對者~多給購物車一個框 by CM
+                    font-size: 11px;
+                }
+
+                // 點擊soul顯示陰德值
+                .soul-gooddeed-box {
+                    position: relative;
+                    width: 36px;
+                    border-radius: 36px;
+                    box-shadow: inset 0px 0px 0px 3px #fff;
+                    transition: width 1s;
+                    // overflow: hidden;
+
+                    &.show-gooddeed {
+                        width: 108px;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    .gooddeed-text {
+                        position: absolute;
+                        top: 7px;
+                        left: 26px;
+                        font-size: 20px;
+                        font-weight: bold;
+                        overflow: hidden;
+                        width: 0;
+                        opacity: 0;
+                        transition: width 1s, opacity 1s;
+
+                        &.show {
+                            width: 80px;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nav-light {
+    background-color: $bgc-Nav-mobile-light;
+}
+
+@media screen and (min-width: 992px) {
+    .nav-light {
+        background-color: transparent;
+    }
+}
+
+.nav-dark {
+    background-color: $bgc-Nav-mobile-dark;
+}
+
+@media screen and (min-width: 992px) {
+    .nav-dark {
+        background-color: transparent;
+    }
+}
+
+// --------Nav光箱目錄(手機版)--------------
+
+.nav_lightbox_hidden {
+    background-color: #000000cc;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+
+        h2,h4{
+            visibility: hidden !important;
+        }
+}
+
+.nav_lightbox_visible {
+    background-color: #000000cc;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    transition: linear 0.4s; /* FIXME: 目前無法正確作用 */
+    z-index: 100000;
+}
+
+.nav_lightbox_wrap {
+    width: 80%;
+    position: relative;
+
+    > .nav_lightbox_list {
+        display: flex;
+        border-radius: 10px;
+        height: 50px;
+        max-height: 50px;
+        // outline: 1px solid yellow;
+        align-items: center;
+
+
+        > h2 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            line-height: 4.5rem;
+            margin-right: 20px;
+            margin-left: 10px;
+        }
+
+
+        > h4 {
+            // 手機版介紹文字不出現
+            display: none;
+            color: #ffffff;
+            line-height: 6rem;
+            letter-spacing: 0.2rem;
+            visibility: hidden;
+        }
+
+        // 功德撲滿缺字處理
+        img{
+            margin: 0px;
+            // outline: 1px solid white;
+            width: 31.7%;
+            margin-left: 10px;
+        }
+    }
+
+    // 會員中心下面margin較多
+    .nav_lightbox_list:nth-child(8){
+        margin-bottom: 30px;
+    } 
+
+    .nav_lightbox_list:hover {
+        background-color: $highlight;
+        cursor: pointer;
+    }
+
+    .nav_lightbox_list:hover {
+        > h2,
+        h4 {
+            color: $bgc-D;
+        }
+
+        h4{
+            visibility: visible;
+            transition: .3s linear;
+            transform: translateX(5px);
+        }
+
+        // 「功德撲滿」SVG變色
+        img {
+            filter: invert(75%) sepia(60%) saturate(493%) hue-rotate(202deg)
+                brightness(85%) contrast(100%);
+        }
+    }
+}
+
+.nav-btn {
+    font-family: $ff-h, $ff-t;
+    // font-size: $fz-h5;
+    font-weight: 500;
+    color: #fff;
+    height: 65px;
+    text-align: center;
+    background-color: $primary;
+    border-radius: 10px;
+    // 新增加的
+    font-size: 1.5rem;
+}
+
+.nav-btn:hover {
+    background-color: $secondary;
+}
+
+
+
+// 目錄頁_漢堡_visible
+.mainpage_icon_visible{
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 25%;
+    display: block;
+
+    >img{
+        width: 100%;
+    }
+}
+
+// 目錄頁_漢堡_hidden
+.mainpage_icon_hidden{
+    display: none;
+}
+
+
+// 功德撲滿缺字處理
+.nav_lightbox_list {
+    img {
+        width: 48%;
+        margin-top: 14px;
+        margin-bottom: 14px;
+        margin-right: 25px;
+        // outline: 1px solid red;
+        margin-left: 9px;
+    }
+}
+
+
+@media screen and (min-width: 992px) {
+    .nav_lightbox_wrap {
+        width: 80%;
+
+        > .nav_lightbox_list {
+            display: flex;
+            align-items: center;
+            margin-right: 140px;
+            height: 85px;
+            max-height: 85px;
+
+            > h2 {
+                margin-right: 25px;
+                font-size: 3rem;
+            }
+
+            > h4 {
+                display: block;
+            }
+        }
+    }
+
+    // 功德撲滿缺字處理
+    .nav_lightbox_list {
+        img {
+            max-height: 75px;
+            max-width: 193px;
+            height: 70px;
+            margin-right: 25px;
+            // outline: 1px solid red;
+        }
+
+        .xuan-missing-h4{
+            margin-left: 25px;
+        }
+    }
+
+
+    // 目錄頁_漢堡_hidden
+    .mainpage_icon_hidden{
+        // visibility: hidden;
+        display: none;
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        width: 12%;
+    
+        >img{
+            width: 100%;
+        }
+    }
+
+    // 目錄頁_漢堡_visible
+    .mainpage_icon_visible{
+        display: block;
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        width: 12%;
+        // visibility: visible;
+
+        >img{
+            width: 100%;
+        }
+    }
+
+
+    .nav-btn{
+        font-size: 2rem;
+        margin-left: 10px;
+    }
+
+}
+
+// TODO: 以下處理 Navbar 模式切換按鈕
+.nav-toggle-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    // overflow: hidden;
+    // padding: 0 200px;
+    // transform: translate3d(-50%, -50%, 0);
+
+    .nav-tw-input {
+        visibility: hidden;
+    }
+
+    .nav-tw-label {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        width: 110px;
+        height: 60px;
+        // background-color: #83D8FF;
+        // border: 4px solid green;
+        border-width: 4px;
+        border-style: solid;
+        border-radius: 30px;
+        transition: background-color 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+        .nav-tw-l-toggle-indicator {
+            width: 49px;
+            height: 49px;
+            background-color: #000000;
+            position: absolute;
+            border-radius: 50%;
+            transform: translateX(-24.5px);
+            z-index: 1;
+            // transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            // transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .nav-tw-l-span-S {
+            // background-color: #fff;
+            border-radius: 50%;
+            width: 49px;
+            height: 49px;
+            margin: 1px;
+            position: relative;
+            left: 1px;
+            z-index: 2;
+        }
+        
+        .nav-tw-l-span-C {
+            // background-color: #fff;
+            border-radius: 50%;
+            width: 49px;
+            height: 49px;
+            margin: 1px;
+            position: relative;
+            z-index: 2;
+        }
+    }
+
+    .nav-tw-input:checked {
+        + .nav-tw-label {
+            .nav-tw-l-toggle-indicator {
+                transform: translateX(24.5px);
+                background-color: #FFFFFF;
+            }
+            .nav-tw-l-span-S {
+                // background-color: green;
+                border-radius: 50%;
+                width: 49px;
+                height: 49px;
+                margin: 1px;
+            }
+        }
+    }
+}
+
+// 這裡處理雙色配置
+.nav-toggle-wrapper-light {
+    .nav-tw-label {
+        background-color: $primary-50p;
+        border-color: $primary-50p;
+    }
+}
+
+.nav-toggle-wrapper-dark {
+    .nav-tw-label {
+        background-color: #cccccc;
+        border-color: #000000;
+
+        .nav-tw-l-span-C {
+            filter: grayscale(1);
+        }
+
+        .nav-tw-l-span-S {
+            filter: grayscale(1);
+        }
+    }
+}
+
+// 處理消失時間差
+.nav-toggle-wrapper {
+    .nav-tw-label {
+        .nav-tw-l-toggle-indicator.isOpening {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+    }
+}
+
+.nav_lightbox_hidden {
+    .nav-toggle-wrapper {
+        display: none;
+    }
+}
+
+.nav_lightbox_visible {
+    .nav-toggle-wrapper {
+        display: block;
+    }
+}
+
+
+/* ============================================================ */
+/* MainContent */
+/* ============================================================ */
+
+.main-container {
+    padding-top: $height-nav-mobile;
+}
+
+@media screen and (min-width: 768px) {
+    .main-container {
+        padding-top: $height-nav;
+    }
+}
+
+/* ============================================================ */
+/* Header */
+/* ============================================================ */
+.header-container {
+    padding-top: 20px;
+    margin-bottom: 16px;
+    position: relative;
+    // outline: 1px solid red;
+}
+
+@media screen and (min-width: 992px) {
+    .header-container {
+        padding-top: 10px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    // TODO: Try~ top: clamp(30px, 10vw, 50px);
+    .header-container {
+        // FIXME: 可以固定用筆電螢幕高度作為 基準嗎 或利用 padding 不可為負值的特性
+        top: 0;
+        // top: calc(var(--vh, 1vh) * 109 - 935px);
+        margin-bottom: calc(var(--vh, 1vh) * 2);
+        // outline: 1px solid red;
+    }
+}
+
+// FIXME: 目前字體大小是吃 h2 的設定 必須要改成 RWD
+.header {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: $ff-h;
+    // width: 100%;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    letter-spacing: 0.3rem;
+    // outline: 1px solid red;
+    position: relative;
+}
+
+// FIXME: Header RWD font-size
+@media screen and (min-width: 500px) {
+    .header {
+        font-size: 3rem;
+        padding-left: 20px;
+        letter-spacing: 0.6rem;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    .header {
+        font-size: 3.5rem;
+    }
+}
+
+.header-baseline-decoration {
+    width: 40vw;
+    // FIXME: min-width 要配合字體大小 RWD
+    // FIXME: 目前寬度是跟有按鈕的版本 應該要獨立出來
+    // DONE: 已經獨立
+    min-width: 220px;
+    // TODO: height (%)
+    height: 15px;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    z-index: -1;
+}
+
+.header-container-sharewall-edition {
+    .header-baseline-decoration {
+        width: 70vw;
+        min-width: 320px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .header-baseline-decoration {
+        width: 40vw;
+        min-width: 350px;
+        height: 25px;
+        bottom: -13px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .header-container-sharewall-edition {
+        .header-baseline-decoration {
+            width: 50vw;
+            min-width: 450px;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .header-baseline-decoration {
+        width: 35vw;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .header-container-sharewall-edition {
+        .header-baseline-decoration {
+            width: 40vw;
+            min-width: 480px;
+        }
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .header-baseline-decoration {
+        width: 30vw;
+        max-width: 430px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .header-container-sharewall-edition {
+        .header-baseline-decoration {
+            width: 30vw;
+            min-width: 520px;
+            
+        }
+    }
+}
+
+.cpl-header-sharewall-button {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: transparent;
+    filter: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    position: absolute;
+    // FIXME: 先寫死就好
+    left: 200px;
+    top: 19px;
+    font-size: $fz-caption;
+    font-weight: 500;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+
+    // &:hover {}
+
+    &:active {
+        // FIXME: 先寫死就好
+        left: 200px;
+        top: 17px;
+    }
+
+    > .cpl-hsb-button-option {
+        > .cpl-hsb-bo-icon:first-child {
+            font-size: $fz-title;
+        }
+
+        > .cpl-hsb-bo-IoCaretDown {
+            font-size: 1.125rem;
+            position: relative;
+            top: 1px;
+        }
+
+        > .cpl-hsb-bo-icon.cpl-hsb-bo-FiBookmark {
+            position: relative;
+            // top: 1px;
+        }
+
+        > .cpl-hsb-bo-title {
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+    }
+
+    > .cpl-hsb-button-option.cpl-hsb-bo-select {
+        + .cpl-hsb-bo-select {
+            margin-top: 5px;
+        }
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-header-sharewall-button {
+        font-size: $fz-body;
+        left: 290px;
+        top: 24px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-left: 16px;
+        padding-right: 16px;
+
+        &:active {
+            top: 22px;
+            left: 290px;
+        }
+
+        > .cpl-hsb-button-option {
+            > .cpl-hsb-bo-icon:first-child {
+                font-size: 1.625rem;
+            }
+
+            > .cpl-hsb-bo-IoCaretDown {
+                font-size: $fz-subtitle;
+            }
+
+            > .cpl-hsb-bo-title {
+                padding-left: 6px;
+                padding-right: 6px;
+            }
+        }
+
+        > .cpl-hsb-button-option.cpl-hsb-bo-select {
+            + .cpl-hsb-bo-select {
+                margin-top: 8px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-header-sharewall-button {
+        top: 15px;
+
+        &:active {
+            top: 13px;
+        }
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-header-sharewall-button {
+        // top: 10px;
+        top: 19px;
+        left: 330px;
+
+        &:active {
+            // top: 8px;
+            top: 17px;
+            left: 330px;
+        }
+    }
+}
+
+.cpl-header-sharewall-button.theme-dark {
+    border-color: $bgc-L-l;
+    color: $bgc-L-l;
+}
+
+.cpl-header-sharewall-button.theme-dark.isActive {
+    background-color: $bgc-D-70p;
+}
+
+.cpl-header-sharewall-button.theme-light {
+    border-color: $bgc-D;
+    color: $bgc-D;
+}
+
+.cpl-header-sharewall-button.theme-light.isActive {
+    background-color: $bgc-L-l-70p;
+}
+
+/* ============================================================ */
+/* Background */
+/* ============================================================ */
+.background {
+    // 不可以 absolute 只會在調整視窗大小時渲染一次
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -100000;
+
+    .bg-L-cloud-left-top {
+        display: none;
+        position: absolute;
+        left: -22%;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
+        top: 0%;
+        width: 60%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-L-cloud-left-top {
+            display: block;
+        }
+    }
+
+    .bg-L-mist-right-top-L {
+        display: none;
+        position: absolute;
+        right: -10%;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
+        top: -40%;
+        width: 50%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-L-mist-right-top-L {
+            display: block;
+            animation: bgLmrtL ease-in-out 12s infinite alternate-reverse;
+        }
+
+        @keyframes bgLmrtL {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .bg-L-mist-right-top-S {
+        display: none;
+        position: absolute;
+        right: -10%;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
+        top: -42%;
+        width: 50%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-L-mist-right-top-S {
+            display: block;
+            animation: bgLmrtS ease-in-out 12s infinite alternate-reverse;
+        }
+
+        @keyframes bgLmrtS {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .bg-L-cloud-right-bottom {
+        display: none;
+        position: absolute;
+        right: -13%;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
+        bottom: 0%;
+        width: 40%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-L-cloud-right-bottom {
+            display: block;
+        }
+    }
+}
+
+.background-dark {
+    background-color: $bgc-D;
+
+    .bg-D-cloud-left-bottom {
+        display: none;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 35%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-cloud-left-bottom {
+            display: block;
+            // animation: bgDclb ease-in-out 12s infinite alternate-reverse;
+        }
+
+        @keyframes bgDclb {
+            0% {
+                left: -20px;
+            }
+            100% {
+                left: 0px;
+            }
+        }
+    }
+
+    .bg-D-wave-right-top-L {
+        display: none;
+        position: absolute;
+        right: 0;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
+        top: 0%;
+        width: 40%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-wave-right-top-L {
+            display: block;
+        }
+    }
+
+    .bg-D-wave-right-top-S {
+        display: none;
+        position: absolute;
+        right: 0;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
+        top: 0%;
+        width: 32%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-wave-right-top-S {
+            display: block;
+        }
+    }
+
+    .bg-D-star-left {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 17%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-star-left {
+            display: block;
+            animation: star-left-flickering 10s infinite;
+        }
+
+        // FIXME: 星星閃爍效果的一種寫法 或許可以想辦法柔和一點
+        @keyframes star-left-flickering {
+            0% {
+                opacity: 1;
+            }
+            15% {
+                opacity: 1;
+            }
+            25% {
+                opacity: 0;
+            }
+            35% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+
+    .bg-D-star-right {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 23%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-star-right {
+            display: block;
+            animation: star-right-flickering 10s infinite;
+            // animation: star-right-sizing 10s infinite;
+            // animation: star-right-rotating 10s infinite;
+        }
+
+        // FIXME: 右邊的星星比較大 比較搶眼 視覺上要更柔和才行
+        @keyframes star-right-flickering {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            75% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        // @keyframes star-right-sizing {
+        // 0%   { transform: scale(1); }
+        // 50%  { transform: scale(1); }
+        // 75%  { transform: scale(0.98); }
+        // 85%  { transform: scale(1); }
+        // 100% { transform: scale(1); }
+        // }
+
+        // @keyframes star-right-rotating {
+        //     0%   { transform: rotate(0); }
+        //     50%  { transform: rotate(0); }
+        //     75%  { transform: rotate(1deg) scale(0.99) }
+        //     // 85%  { transform: rotate(0); }
+        //     100% { transform: rotate(0); }
+        // }
+    }
+
+    .bg-D-meteor-right-top {
+        display: none;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-meteor-right-top {
+            display: block;
+            position: absolute;
+            right: 9%;
+            top: 10%;
+        }
+    }
+
+    .bg-D-meteor-right-bottom {
+        display: none;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-meteor-right-bottom {
+            display: block;
+            position: absolute;
+            right: 35%;
+            bottom: 10%;
+        }
+    }
+
+    .bg-D-meteor-left-top {
+        display: none;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-meteor-left-top {
+            display: block;
+            position: absolute;
+            left: 42%;
+            top: 21%;
+        }
+    }
+
+    .bg-D-meteor-left-bottom {
+        display: none;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-meteor-left-bottom {
+            display: block;
+            position: absolute;
+            left: 17%;
+            bottom: 29%;
+        }
+    }
+}
+
+/* ============================================================ */
+/* Genie */
+/* ============================================================ */
+/* FIXME: 素材修正後要調整 css position */
+/* TODO: Genie 的 z-index 要僅次於浮出的全頁式 Nav Page */
+.genie {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    width: 11%;
+    /* 思方老師說最好不要超過 85px */
+    max-width: 85px;
+}
+
+@media screen and (min-width: 992px) {
+    .genie {
+        bottom: -30px;
+    }
+}

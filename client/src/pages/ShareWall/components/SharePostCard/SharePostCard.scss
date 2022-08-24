@@ -1,0 +1,265 @@
+@import '../../../../styles/variables.scss';
+
+.cpl-share-post-card {
+    width: 100%;
+    aspect-ratio: 6/7;
+    border: 2px solid $secondary;
+    border-radius: 20px;
+    position: relative;
+    backdrop-filter: blur(2px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    overflow: hidden;
+    top: 0;
+    transition: 0.4s;
+
+    .cpl-spc-avatar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 15%;
+        margin: auto;
+        width: 80%;
+        z-index: -1;
+    }
+
+    .cpl-spc-af-round,
+    .cpl-spc-af-square {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        aspect-ratio: 1/1;
+        border: 2px solid $bgc-D;
+        z-index: -2;
+    }
+
+    .cpl-spc-af-round {
+        bottom: 16%;
+        width: 83%;
+        border-radius: 50%;
+    }
+    
+    .cpl-spc-af-square {
+        bottom: 4.8%;
+        width: 70%;
+    }
+
+    .cpl-spc-info-area {
+        background-color: $secondary-50p;
+        position: relative;
+        margin-top: 100%;
+
+        .cpl-spc-mh-area {
+            width: 16%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid $bgc-L-l;
+            background-color: $bgc-L-l;
+            top: -44%;
+            
+            .cpl-spc-memberhead {
+                width: 400%;
+                position: relative;
+                left: -150%; /* 200% - 50% */
+                top: -45%; /* - 50% + 5% 規避頸部 */
+            }
+        }
+    }
+
+    .cpl-spc-info-abstract {
+        // height: 88px;
+        aspect-ratio: 107/20; /* 先心算估一個比例 */
+        font-size: $fz-body;
+        color: #FFFFFF;
+    }
+}
+
+.cpl-share-post-card:hover {
+    top: -5px;
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-share-post-card {
+        .cpl-spc-info-abstract {
+            aspect-ratio: 111/20;
+            font-size: $fz-subtitle;
+        }
+    }
+}
+
+.cpl-spc-box-shadow-light {
+    box-shadow: 10px 10px 5px $black-20p;
+}
+
+@media screen and (min-width: 576px) {
+    .cpl-spc-box-shadow-light {
+        box-shadow: 15px 15px 8px $black-20p;
+    }
+}
+
+.cpl-spc-box-shadow-dark {
+    box-shadow: 10px 10px 5px $black-30p;
+}
+
+@media screen and (min-width: 576px) {
+    .cpl-spc-box-shadow-dark {
+        box-shadow: 15px 15px 8px $black-30p;
+    }
+}
+
+// FIXME: 要調成百分比
+// DONE: 粗略調整過
+@media screen and (min-width: 992px) {
+    .cpl-share-post-card {
+        // width: 350px;
+        width: calc(var(--vh, 1vh) * 45);
+        // height: 420px;
+        height: calc(var(--vh, 1vh) * 54);
+        margin-left: 0;
+        margin-right: 40px;
+        margin-bottom: 0;
+
+        .cpl-spc-avatar {
+            bottom: 60px;
+        }
+
+        .cpl-spc-info-area {
+            // margin-top: 360px;
+            margin-top: 104.2%;
+
+            .cpl-spc-mh-area {
+                width: 70px;
+                top: -35px;
+            }
+        }
+
+        .cpl-spc-info-abstract {
+            // height: 56px; /* 60px - 2px - 2px */
+            aspect-ratio: 112/20;
+        }
+    }
+}
+
+// .cpl-spc-ib-inner-right {
+    // outline: 1px solid red;
+// }
+
+.cpl-spc-info-content {
+    display: none;
+    position: absolute;
+    bottom: 20%;
+    color: #FFFFFF;
+}
+
+.cpl-apc-ic-title {
+    font-size: $fz-title;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.cpl-apc-ic-text {
+    font-size: $fz-body;
+    margin-bottom: 1rem;
+}
+
+.cpl-apc-ic-more {
+    font-weight: 500;
+    
+    > p {
+        cursor: pointer;
+        display: inline-block;
+        width: fit-content;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    // .cpl-spc-info-content {
+        // bottom: 75px;
+        // bottom: 20%;
+    // }
+    
+    .cpl-apc-ic-title,
+    .cpl-apc-ic-text {
+        margin-bottom: 0.75rem;
+    }
+}
+
+.cpl-share-post-card {
+    &:hover {
+        border: 2px solid $primary;
+
+        .cpl-spc-info-area {
+            background-color: $primary-50p;
+        }
+
+        .cpl-spc-info-content {
+            display: block;
+        }
+
+        .cpl-spc-shadow {
+            background-image: linear-gradient(180deg, transparent 30%, #000000CC)
+            ;
+            position: absolute;
+            top: 0;
+            // 長寬比會變動的地方 用 padding-bottom 處理
+            // aspect-ratio: 1 / 1;
+            width: 100%;
+            padding-bottom: 100%;
+            z-index: -1;
+        }
+
+        @media screen and (min-width: 992px) {
+            .cpl-spc-shadow {
+                // bottom: 56px;
+                bottom: 13.3%;
+            }
+        }
+    }
+}
+
+.cpl-spc-heart-icon {
+    font-size: 2rem;
+    margin-left: 4vw; // FIXME: 可能要改用 vh 算
+    cursor: pointer;
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-spc-heart-icon {
+        margin-left: 5px;
+        position: relative;
+        right: -5px;
+    }
+}
+
+// .cpl-spc-heart-icon.isLiked {
+//     color: $primary;
+// }
+
+.cpl-spc-ib-inner-left {
+    font-size: 125%;
+    padding-left: 20%;
+    // outline: 1px solid green;
+    line-height: normal;
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-spc-ib-inner-left {
+        // padding-left: 75px;
+        padding-left: 23.5%;
+        font-size: $fz-subtitle;
+    }
+}
+
+.cpl-spc-FaBookmark {
+    color: $highlight;
+    position: absolute;
+    font-size: $fz-h3;
+    right: 20px;
+    top: -4px;
+}

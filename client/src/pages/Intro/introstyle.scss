@@ -1,0 +1,432 @@
+@import '../../styles/variables.scss';
+
+
+.intro-container{ 
+    position: relative;
+    
+    background-color: #3C3B67;
+   
+    font-family: $ff-t;
+}
+
+@media screen and (min-width:768px) {
+    .intro-container{
+        top: -96px;
+        margin-bottom: -96px;
+    }
+}
+
+@keyframes intro-scroll-guide {
+    0%   {background-position-y: -21px;}
+    100% {background-position-y: 22px;}
+  }
+
+.intro-h2{ font-size: $fz-h4;
+    font-family: $ff-t;
+    color: rgb(255, 255, 255);
+    line-height: 3.5rem;
+    letter-spacing: 0.2rem;
+    font-weight: 600;
+}
+
+.yun-fix-scroll{
+    
+
+    width: 150px;height: 50px;
+    position:fixed;
+    bottom: 5%;
+    right: 5%;
+    text-align: center;
+    // background-color: rgb(218, 112, 112);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .yun-scroll-img{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url(./introImg/arrow.svg)center center no-repeat;
+        margin-left: 5px;
+        background-size: contain;
+        animation: intro-scroll-guide 1.5s linear infinite;
+   
+        
+    }
+    p{  
+        display: inline-block;
+       
+        font-size: $fz-caption;
+        font-family: $ff-t;
+        color: rgb(255, 255, 255);
+        line-height: 2.5rem;
+        letter-spacing: 0.05rem;
+        font-weight: 600;
+    }
+}
+
+.yun-intro-skip{
+    z-index: 10000;
+    cursor: pointer;
+    width: 80px;
+    height: 20px;
+   
+    position: fixed;
+    top: 5%;
+    right: 5%;
+
+    p{
+        font-size: $fz-caption;
+        font-family: $ff-t;
+        color: $highlight;
+        font-weight: 600;
+    }
+}
+.yun-scroll-pls{
+    height: 100%;
+}
+
+
+  
+  @keyframes star-shine{
+    0%   { transform: scale(1);}
+  
+    50%{transform: scale(1.02);}
+
+    100%   { transform: scale(1);}
+  } 
+
+
+
+
+.star{
+    // border: solid 1px red;
+   
+    width: 145px;
+ 
+    height: 165px;
+    border-radius: 50%;
+    background-color: #fff;
+    
+
+
+}
+.starmask{
+    // border: solid 1px red;
+   
+    width: 160px;
+    height: 165px;  
+    background-color: $bgc-D;
+    border-radius: 100%; 
+    animation: star-shine ease-in 2s infinite alternate-reverse;
+}
+
+.mainstar{
+    // border: 1px solid red;
+    width: 50px;
+    height: 50px;
+    
+    background: url(./introImg/mainStar/mainStar16.svg) center center no-repeat;
+    background-size: cover;
+    opacity: 1;
+}
+
+
+@media screen and (max-width:768px) {
+    h2{
+        font-size: 20px;
+    }
+}
+
+@keyframes hand-rotate{
+    0%   { transform: rotate(-15deg);}
+   
+    100%   { transform: rotate(-60deg)}
+} 
+.god-table{
+    width: 700px;
+    height: 120px;
+    // background-color: #fff;
+    border-bottom: 5px solid #fff;
+}
+
+.god-glass1{
+    width: 60px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.2);
+    background: url(./introImg/god/glass.svg)center center no-repeat;
+    background-size: contain;
+    overflow: hidden;
+    position: relative;
+}
+.god-glass1::before{
+    width: 45px;
+    height: 50px;
+    content:'';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8px;
+    background-color: rgb(146, 65, 189);
+    overflow: hidden;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%,10% 100%);
+
+
+}
+// .glass-water{
+//     position: relative;
+//     clip-path: polygon(0% 0%, 100% 0%, 90% 100%,10% 100%);
+
+//     top: 50%;
+//     width: 100%;
+//     height: 60%;
+//     background-color: rgb(180, 87, 177);
+// }
+.god-glass2{
+    border: 1px solid red;
+    opacity: 0.2;
+    width: 250px;
+    height: 52px;
+    background: url(./introImg/god/glass2.svg)center center no-repeat;
+    background-size: contain;
+
+}
+.god-hand{
+    // border:1px solid red;
+    
+    width: 60px;
+    height: 160px;
+    background: url(./introImg/god/god-hand.svg)center center no-repeat;
+    background-size: contain;
+    transform-origin: right top;
+    // animation: hand-rotate ease 1s infinite alternate-reverse;
+}
+
+
+.god{
+    // opacity: 0.5;
+    width: 280px;
+    height: 320px;
+    background: url(./introImg/god/god.svg)center center no-repeat;
+    background-size: contain;
+}
+.intro-box-front-pin{
+    width: 56px;
+    height: 80px;
+    background: url(./introImg/Pin.svg)center center no-repeat;
+    background-size: contain;
+
+}
+.intro-box-front{
+  
+    width: 240px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.mirror{
+
+    width: 240px;
+    height: 300px;
+   
+    background-size: contain;
+    border: 25px solid $bgc-D;
+    border-radius: 50%;
+
+}
+.intro-box{
+  
+    width: 550px;
+    height: 600px;
+    background-color: #fff;
+}
+.mirrorMan{
+    width: 210px;
+    height: 240px;
+    background: url(./introImg/mirrorman/MirrorMan.svg)center center no-repeat;
+    background-size: contain;
+}
+.InsideMirror{
+    width: 120px;
+    height: 140px;
+    background: url(./introImg/mirrorman/inside1.svg)center center no-repeat;
+    background-size: contain;
+}
+.mirrorEye{
+    width: 55px;
+    height: 22px;
+    background: url(./introImg/mirrorman/eyes.svg)center center no-repeat;
+    background-size: contain;
+}
+.mirrorEye1{
+    width: 55px;
+    height: 22px;
+    background: url(./introImg/mirrorman/eyes-shine.svg)center center no-repeat;
+    background-size: contain;
+}
+.mirrorEar{
+    
+    width: 100px;
+    height: 40px;
+    background: url(./introImg/mirrorman/catEar.svg)center center no-repeat;
+    background-size: contain;
+ 
+}
+.mirror1{
+
+    width: 240px;
+    height: 300px;
+   
+    background-size: contain;
+    border: 25px solid $bgc-D;
+    border-radius: 50%;
+
+}
+.mirror1::before{
+    content: '';
+    position: absolute;
+    width: 400px;
+    height:460px;
+
+    border-radius: 50%;
+
+    left: 0px;
+    top: 0px;
+    transform: translate(-80px,-80px);
+    border: 80px solid rgba(255, 255, 255);
+
+}
+.mirror1::after{
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    // border: 1pxsolid rgb(123, 252, 130);
+    left: 0px;
+    top: 300px;
+    background-color: rgb(255, 255, 255);
+
+
+}
+.intro-boxborder{
+    width: 550px;
+    height: 600px;
+    border-right: 80px solid #b7b6dc;
+    border-left: 80px solid #aeadd7;
+    border-top: 80px solid #cccce8;
+
+
+    border-bottom:120px solid #a3a3d3;
+}
+@keyframes logoshine {
+    0%   {    
+        transform: translate(50px,50px);
+        width: 500px;
+        height: 500px;
+        }
+    100% { 
+        transform: translate(-50px,-50px);
+
+        width: 700px;
+        height: 700px;
+    }
+  }
+  .intro-final-logo{
+      width: 490px;
+      height: 560px;
+      background: url(./introImg/logo.svg)center center no-repeat;
+      background-size: contain;
+  
+      
+  }
+.intro-final-logo::before{
+    content:'';
+    z-index: -999;
+    position: absolute;
+    top: -20;
+    left: -55px;
+    border-radius: 50%;
+    width: 600px;
+    height: 600px;
+    background-image: radial-gradient(#e384f283, #9587E180,#9487e100 50%);
+    animation: logoshine  2s linear infinite alternate-reverse;
+  
+    
+}
+@keyframes button-float {
+    0%   { box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+        transform: translate(-1px,-1px);}
+    100% {box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+        transform: translate(1px,1px);}
+  }
+.yun-intro-button{
+  
+    border-radius: 20px;
+    border: 3px solid $primary-50p;
+    z-index: 99999999;
+    cursor: pointer;
+    // width: 300px;
+    // height: 50px;
+    background-color: transparent;
+    position: fixed;
+    top: 65%;
+    left: 50%;
+    text-align: center;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
+    animation: button-float  1s ease-in-out infinite alternate-reverse;
+    
+    p{
+        
+        font-size: $fz-subtitle;
+        font-family: $ff-t;
+        color: $primary;
+        font-weight: 600;
+        line-height: 2.5rem;
+        margin: 0px 24px;
+        
+    }
+    
+    &:hover{
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
+        background-color: rgba(0, 0, 0, 0.3);
+        transform: translate(5px,5px);
+        animation: button-float  0s ease-in-out infinite alternate-reverse;
+        
+    
+    }
+}
+.intro-end{
+    
+
+    width: 150px;height: 50px;
+    position:fixed;
+    bottom: 5%;
+    right: 5%;
+    text-align: center;
+    // background-color: rgb(218, 112, 112);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .yun-scroll-img{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url(./introImg/arrow.svg)center center no-repeat;
+        margin-left: 5px;
+        background-size: contain;
+       border-bottom: 3px solid rgb(255, 255, 255);
+   
+        
+    }
+    p{  
+        display: inline-block;
+       
+        font-size: $fz-caption;
+        font-family: $ff-t;
+        color: rgb(255, 255, 255);
+        line-height: 2.5rem;
+        letter-spacing: 0.05rem;
+        font-weight: 600;
+    }
+}
